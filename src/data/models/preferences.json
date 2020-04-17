@@ -1,0 +1,81 @@
+{
+  "includes": [
+    "isolang::Language",
+    "crate::visibility::Visibility"
+  ],
+  "models": [
+    {
+      "name": "Preferences",
+      "description": "",
+      "fields": [
+        {
+          "name": "posting_default_visibliity",
+          "description": "Default visibility for new posts.",
+          "attributes": [
+            "serde(rename = \"posting:default:visibility\")"
+          ],
+          "type": "Visibility"
+        },
+        {
+          "name": "posting_default_sensitive",
+          "description": "Default sensitivity flag for new posts.",
+          "attributes": [
+            "serde(rename = \"posting:default:sensitive\")"
+          ],
+          "type": "bool"
+        },
+        {
+          "name": "posting_default_language",
+          "description": "Default language for new posts.",
+          "attributes": [
+            "serde(rename = \"posting:default:language\")"
+          ],
+          "type": "Language",
+          "optional": true
+        },
+        {
+          "name": "reading_expand_media",
+          "description": "Whether media attachments should be automatically displayed or blurred/hidden.",
+          "attributes": [
+            "serde(rename = \"reading:expand:media\")"
+          ],
+          "type": "ExpandMedia"
+        },
+        {
+          "name": "reading_expand_spoilers",
+          "description": "Whether CWs should be expanded by default.",
+          "attributes": [
+            "serde(rename = \"reading:expand:spoilers\")"
+          ],
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "ExpandMedia",
+      "description": "Whether media attachments should be automatically displayed or blurred/hidden.",
+      "derives": [
+        "Copy"
+      ],
+      "attributes": [
+        "serde(rename_all = \"snake_case\")"
+      ],
+      "variants": [
+        {
+          "name": "Default",
+          "description": "default = Hide media marked as sensitive"
+        },
+        {
+          "name": "ShowAll",
+          "description": "show_all = Always show all media by default, regardless of sensitivity"
+        },
+        {
+          "name": "HideAll",
+          "description": "hide_all = Always hide all media by default, regardless of sensitivity"
+        }
+      ]
+    }
+  ]
+}

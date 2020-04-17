@@ -1,0 +1,200 @@
+{
+    "includes": [
+        "crate::account",
+        "crate::status::Status",
+        "chrono::DateTime",
+        "chrono::Utc",
+        "isolang::Language"
+    ],
+    "models": [
+        {
+            "name": "Account",
+            "description": "Admin-level information about a given account.",
+            "fields": [
+                {
+                    "description": "The ID of the account in the database.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "id",
+                    "type": "String"
+                },
+                {
+                    "description": "The username of the account.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "username",
+                    "type": "String"
+                },
+                {
+                    "description": "The domain of the account.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "domain",
+                    "type": "String"
+                },
+                {
+                    "description": "When the account was first discovered.",
+                    "name": "created_at",
+                    "type": "DateTime<Utc>"
+                },
+                {
+                    "description": "The email address associated with the account.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "email",
+                    "type": "String"
+                },
+                {
+                    "description": "The IP address last used to login to this account.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "ip",
+                    "type": "String"
+                },
+                {
+                    "description": "The locale of the account.",
+                    "name": "locale",
+                    "type": "Language"
+                },
+                {
+                    "description": "Invite request text ???",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "invite_request",
+                    "type": "String"
+                },
+                {
+                    "description": "The current role of the account.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "role",
+                    "type": "String"
+                },
+                {
+                    "description": "Whether the account has confirmed their email address.",
+                    "name": "confirmed",
+                    "type": "bool"
+                },
+                {
+                    "description": "Whether the account is currently approved.",
+                    "name": "approved",
+                    "type": "bool"
+                },
+                {
+                    "description": "Whether the account is currently disabled.",
+                    "name": "disabled",
+                    "type": "bool"
+                },
+                {
+                    "description": "Whether the account is currently silenced.",
+                    "name": "silenced",
+                    "type": "bool"
+                },
+                {
+                    "description": "Whether the account is currently suspended.",
+                    "name": "suspended",
+                    "type": "bool"
+                },
+                {
+                    "description": "User-level information about the account.",
+                    "name": "account",
+                    "type": "account::Account"
+                },
+                {
+                    "description": "The ID of the application that created this account.",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "created_by_application_id",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "description": "The ID of the account that invited this user",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "invited_by_account_id",
+                    "type": "String",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "name": "Report",
+            "description": "Admin-level information about a filed report.",
+            "fields": [
+                {
+                    "description": "The ID of the report in the database.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "id",
+                    "type": "String"
+                },
+                {
+                    "description": "The action taken to resolve this report.",
+                    "name": "action_taken",
+                    "type": "bool"
+                },
+                {
+                    "description": "An optional reason for reporting.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "comment",
+                    "type": "String"
+                },
+                {
+                    "description": "The time the report was filed.",
+                    "name": "created_at",
+                    "type": "DateTime<Utc>"
+                },
+                {
+                    "description": "The time of last action on this report.",
+                    "name": "updated_at",
+                    "type": "DateTime<Utc>"
+                },
+                {
+                    "description": "The account which filed the report.",
+                    "name": "account",
+                    "type": "account::Account"
+                },
+                {
+                    "description": "The account being reported.",
+                    "name": "target_account",
+                    "type": "account::Account"
+                },
+                {
+                    "description": "The account of the moderator assigned to this report.",
+                    "name": "assigned_account",
+                    "type": "account::Account"
+                },
+                {
+                    "description": "The action taken by the moderator who handled the report.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "action_taken_by_account",
+                    "type": "String"
+                },
+                {
+                    "description": "Statuses attached to the report, for context.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "statuses",
+                    "type": "Vec<Status>"
+                }
+            ]
+
+        }
+    ]
+}

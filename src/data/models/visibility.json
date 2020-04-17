@@ -1,0 +1,34 @@
+{
+  "includes": [],
+  "models": [ ],
+  "enums": [
+    {
+      "name": "Visibility",
+      "description": "Post visibility settings",
+      "attributes": [
+        "serde(rename_all = \"snake_case\")"
+      ],
+      "derives": [
+        "Copy"
+      ],
+      "variants": [
+        {
+          "name": "Public",
+          "description": "public = Public post"
+        },
+        {
+          "name": "Unlisted",
+          "description": "unlisted = Unlisted post"
+        },
+        {
+          "name": "Private",
+          "description": "private = Followers-only post"
+        },
+        {
+          "name": "Direct",
+          "description": "direct = Direct post"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+    "includes": [
+        "crate::emoji::Emoji",
+        "crate::field::Field",
+        "crate::source::Source",
+        "chrono::DateTime",
+        "chrono::Utc",
+        "url::Url"
+    ],
+    "models": [
+        {
+            "name": "Account",
+            "description": "Represents a user of Mastodon and their associated profile.",
+            "fields": [
+                {
+                    "name": "id",
+                    "description": "The account id header.",
+                    "type": "String",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                },
+                {
+                    "name": "username",
+                    "type": "String",
+                    "description": "The username of the account, not including domain.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                },
+                {
+                    "name": "acct",
+                    "type": "String",
+                    "description": "The Webfinger account URI. Equal to username for local users, or username@domain for remote users.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                },
+                {
+                    "name": "url",
+                    "type": "Url",
+                    "description": "The location of the user's profile page."
+                },
+                {
+                    "name": "display_name",
+                    "description": "The profile's display name.",
+                    "type": "String",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "description": "When the account was created.",
+                    "type": "DateTime<Utc>"
+                },
+                {
+                    "description": "How many statuses are attached to this account.",
+                    "name": "statuses_count",
+                    "type": "u64"
+                },
+                {
+                    "description": "The reported followers of this profile.",
+                    "name": "followers_count",
+                    "type": "u64"
+                },
+                {
+                    "description": "The reported follows of this profile.",
+                    "name": "following_count",
+                    "type": "u64"
+                },
+                {
+                    "description": "Indicates that the profile is currently inactive and that its user has moved to a new account.",
+                    "name": "moved",
+                    "type": "Box<Account>",
+                    "optional": true,
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ]
+                },
+                {
+                    "description": "Additional metadata attached to a profile as name-value pairs.",
+                    "name": "fields",
+                    "type": "Vec<Field>",
+                    "optional": true,
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ]
+                },
+                {
+                    "description": "A presentational flag. Indicates that the account may perform automated actions, may not be monitored, or identifies as a robot.",
+                    "name": "bot",
+                    "type": "bool",
+                    "optional": true,
+                    "attributes": [
+                        "builder(setter(strip_option),  default)"
+                    ]
+                },
+                {
+                    "description": "An extra entity to be used with API methods to verify credentials and update credentials.",
+                    "name": "source",
+                    "type": "Source",
+                    "optional": true,
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ]
+                },
+                {
+                    "description": "Whether the account has opted into discovery features such as the profile directory.",
+                    "name": "discoverable",
+                    "type": "bool"
+                },
+                {
+                    "description": "Custom emoji entities to be used when rendering the profile. If none, an empty array will be returned.",
+                    "name": "emojis",
+                    "type": "Vec<Emoji>",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                },
+                {
+                    "description": "Whether the account manually approves follow requests.",
+                    "name": "locked",
+                    "type": "bool"
+                },
+                {
+                    "description": "A static version of the header. Equal to header if its value is a static image; different if header is an animated GIF.",
+                    "name": "header_static",
+                    "type": "Url"
+                },
+                {
+                    "description": "An image banner that is shown above the profile and in profile cards.",
+                    "name": "header",
+                    "type": "Url"
+                },
+                {
+                    "description": "A static version of the avatar. Equal to avatar if its value is a static image; different if avatar is an animated GIF.",
+                    "name": "avatar_static",
+                    "type": "Url"
+                },
+                {
+                    "description": "An image icon that is shown next to statuses and in the profile.",
+                    "name": "avatar",
+                    "type": "Url"
+                },
+                {
+                    "description": "The profile's bio / description.",
+                    "name": "note",
+                    "type": "String",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ]
+                }
+            ]
+        }
+    ]
+}

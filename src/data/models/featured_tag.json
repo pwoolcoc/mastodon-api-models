@@ -1,0 +1,40 @@
+{
+    "includes": [
+        "chrono::DateTime",
+        "chrono::Utc"
+    ],
+    "models": [
+        {
+            "name": "FeaturedTag",
+            "description": "Represents a hashtag that is featured on a profile.",
+            "fields": [
+                {
+                    "name": "id",
+                    "description": "Description: The internal ID of the featured tag in the database.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "Description: The name of the hashtag being featured.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "statuses_count",
+                    "description": "Description: The number of authored statuses containing this hashtag.",
+                    "type": "u64"
+                },
+                {
+                    "name": "last_status_at",
+                    "description": "Description: The timestamp of the last authored status containing this hashtag.",
+                    "type": "DateTime<Utc>"
+                }
+            ]
+        }
+    ]
+}

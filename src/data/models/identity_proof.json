@@ -1,0 +1,44 @@
+{
+    "includes": [
+        "chrono::DateTime",
+        "chrono::Utc",
+        "url::Url"
+    ],
+    "models": [
+        {
+            "name": "IdentityProof",
+            "description": "Represents a proof from an external identity provider.",
+            "fields": [
+                {
+                    "name": "provider",
+                    "description": "The name of the identity provider.",
+                    "type": "String"
+                },
+                {
+                    "name": "provider_username",
+                    "description": "The account owner's username on the identity provider's service.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "profile_url",
+                    "description": "The account owner's profile URL on the identity provider.",
+                    "type": "Url"
+                },
+                {
+                    "name": "proof_url",
+                    "description": "A link to a statement of identity proof, hosted by the identity provider.",
+                    "type": "Url"
+                },
+                {
+                    "name": "updated_at",
+                    "description": "The name of the identity provider.",
+                    "type": "DateTime<Utc>"
+                }
+            ]
+        }
+    ]
+}
+

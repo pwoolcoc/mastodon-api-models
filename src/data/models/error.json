@@ -1,0 +1,28 @@
+{
+    "includes": [],
+    "models": [
+        {
+            "name": "Error",
+            "description": "Represents an error message.",
+            "fields": [
+                {
+                    "description": "Description: The error message.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "error",
+                    "type": "String"
+                },
+                {
+                    "description": "Description: A longer description of the error, mainly provided with the OAuth API.",
+                    "attributes": [
+                        "builder(setter(into, strip_option))"
+                    ],
+                    "name": "error_description",
+                    "type": "String"
+                }
+            ]
+        }
+
+    ]
+}

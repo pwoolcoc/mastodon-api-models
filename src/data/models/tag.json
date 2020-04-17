@@ -1,0 +1,36 @@
+{
+  "includes": [
+    "crate::history::History",
+    "url::Url"
+  ],
+  "models": [
+    {
+      "name": "Tag",
+      "description": "Represents a hashtag used within the content of a status.",
+      "fields": [
+        {
+          "name": "name",
+          "description": "Represents a hashtag used within the content of a status.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "description": "A link to the hashtag on the instance.",
+          "type": "Url"
+        },
+        {
+          "name": "history",
+          "description": "Usage statistics for given days.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<History>",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

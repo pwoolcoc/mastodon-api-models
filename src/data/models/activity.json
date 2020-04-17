@@ -1,0 +1,47 @@
+{
+    "includes": [
+        "chrono::serde::ts_seconds",
+        "chrono::DateTime",
+        "chrono::Utc"
+    ],
+    "models": [
+        {
+            "name": "Activity",
+            "description": "Represents a weekly bucket of instance activity.",
+            "fields": [
+                {
+                    "description": "Midnight at the first day of the week.",
+                    "name": "week",
+                    "type": "DateTime<Utc>",
+                    "attributes": [
+                        "serde(with = \"ts_seconds\")"
+                    ]
+                },
+                {
+                    "description": "Statuses created since the week began.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "statuses",
+                    "type": "String"
+                },
+                {
+                    "description": "User logins since the week began.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "logins",
+                    "type": "String"
+                },
+                {
+                    "description": "User registrations since the week began.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "registrations",
+                    "type": "String"
+                }
+            ]
+        }
+    ]
+}

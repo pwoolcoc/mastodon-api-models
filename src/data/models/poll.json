@@ -1,0 +1,89 @@
+{
+  "includes": [
+    "chrono::DateTime",
+    "chrono::Utc",
+    "crate::emoji::Emoji"
+  ],
+  "models": [
+    {
+      "name": "Poll",
+      "description": "Represents a poll attached to a status.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The ID of the poll in the database.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "expires_at",
+          "description": "When the poll ends.",
+          "type": "DateTime<Utc>",
+          "optional": true
+        },
+        {
+          "name": "expired",
+          "description": "Is the poll currently expired?",
+          "type": "bool"
+        },
+        {
+          "name": "multiple",
+          "description": "Does the poll allow multiple-choice answers?",
+          "type": "bool"
+        },
+        {
+          "name": "votes_count",
+          "description": "How many votes have been received.",
+          "type": "u64"
+        },
+        {
+          "name": "voters_count",
+          "description": "How many unique accounts have voted on a multiple-choice poll.",
+          "type": "u64",
+          "optional": true
+        },
+        {
+          "name": "voted",
+          "description": "When called with a user token, has the authorized user voted?",
+          "type": "bool",
+          "optional": true
+        },
+        {
+          "name": "own_votes",
+          "description": "When called with a user token, which options has the authorized user chosen? Contains an array of index values for options",
+          "type": "Vec<u64>",
+          "optional": true
+        },
+        {
+          "name": "options",
+          "description": "Possible answers for the poll.",
+          "type": "Vec<Answer>"
+        },
+        {
+          "name": "emojis",
+          "description": "Custom emoji to be used for rendering poll options.",
+          "type": "Vec<Emoji>"
+        }
+      ]
+    },
+    {
+      "name": "Answer",
+      "description": "Possible answers for the poll.",
+      "fields": [
+        {
+          "name": "title",
+          "description": "The text value of the poll option.",
+          "type": "String"
+        },
+        {
+          "name": "votes_count",
+          "description": "The number of received votes for this option.",
+          "type": "u64",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

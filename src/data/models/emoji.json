@@ -1,0 +1,45 @@
+{
+    "includes": [
+        "url::Url"
+    ],
+    "models": [
+        {
+            "name": "Emoji",
+            "description": "Represents a custom emoji.",
+            "fields": [
+                {
+                    "description": "The name of the custom emoji.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "shortcode",
+                    "type": "String"
+                },
+                {
+                    "description": "A link to the custom emoji.",
+                    "name": "url",
+                    "type": "Url"
+                },
+                {
+                    "description": "A link to a static copy of the custom emoji.",
+                    "name": "status_url",
+                    "type": "Url"
+                },
+                {
+                    "description": "Whether this Emoji should be visible in the picker or unlisted.",
+                    "name": "visible_in_picker",
+                    "type": "bool"
+                },
+                {
+                    "description": "Used for sorting custom emoji in the picker.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "category",
+                    "type": "String",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

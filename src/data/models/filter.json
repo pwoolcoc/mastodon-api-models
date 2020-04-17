@@ -1,0 +1,85 @@
+{
+    "includes": [
+        "chrono::DateTime",
+        "chrono::Utc"
+    ],
+    "models": [
+        {
+            "name": "Filter",
+            "description": "Represents a user-defined filter for determining which statuses should not be shown to the user.",
+            "fields": [
+                {
+                    "name": "id",
+                    "description": "The ID of the filter in the database.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "phrase",
+                    "description": "The text to be filtered.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "context",
+                    "description": "The contexts in which the filter should be applied.",
+                    "type": "Vec<Context>"
+                },
+                {
+                    "name": "expires_at",
+                    "description": "When the filter should no longer be applied",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "type": "DateTime<Utc>",
+                    "optional": true
+                },
+                {
+                    "name": "irreversible",
+                    "description": "Should matching entities in home and notifications be dropped by the server?",
+                    "type": "bool"
+                },
+                {
+                    "name": "whole_word",
+                    "description": "Should the filter consider word boundaries?",
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "enums": [
+        {
+            "name": "Context",
+            "description": "The contexts in which the filter should be applied.",
+            "attributes": [
+                "serde(rename_all = \"lowercase\")"
+            ],
+            "derives": [
+                "Copy"
+            ],
+            "variants": [
+                {
+                    "name": "Home",
+                    "description": "home = home timeline"
+                },
+                {
+                    "name":  "Notifications",
+                    "description": "notifications = notifications timeline"
+                },
+                {
+                    "name": "Public",
+                    "description": "public = public timelines"
+                },
+                {
+                    "name": "Thread",
+                    "description": "thread = expanded thread of a detailed status"
+                }
+            ]
+        }
+    ]
+}
+

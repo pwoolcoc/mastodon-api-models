@@ -1,0 +1,45 @@
+{
+    "includes": [
+        "crate::account::Account",
+        "crate::status::Status"
+    ],
+    "models": [
+        {
+            "name": "Conversation",
+            "description": "Represents a conversation with \\\"direct message\\\" visibility.",
+            "fields": [
+                {
+                    "description": "Local database ID of the conversation.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "id",
+                    "type": "String"
+                },
+                {
+                    "description": "Participants in the conversation.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "accounts",
+                    "type": "Vec<Account>"
+                },
+                {
+                    "description": "Is the conversation currently marked as unread?",
+                    "name": "unread",
+                    "type": "bool"
+                },
+                {
+                    "description": "The last status in the conversation, to be used for optional display.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "last_status",
+                    "type": "Status",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}
+

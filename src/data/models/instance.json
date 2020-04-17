@@ -1,0 +1,145 @@
+{
+  "includes": [
+    "isolang::Language",
+    "url::Url",
+    "crate::account::Account"
+  ],
+  "models": [
+    {
+      "name": "Instance",
+      "description": "Represents the software instance of Mastodon running on this domain.",
+      "fields": [
+        {
+          "name": "uri",
+          "description": "The domain name of the instance.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "description": "The title of the website.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "description": "Admin-defined description of the Mastodon site.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "short_description",
+          "description": "A shorter description defined by the admin.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "description": "An email that may be contacted for any inquiries.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "description": "The version of Mastodon installed on the instance.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "languages",
+          "description": "Primary langauges of the website and its staff.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Language>"
+        },
+        {
+          "name": "registrations",
+          "description": "Whether registrations are enabled.",
+          "attributes": [],
+          "type": "bool"
+        },
+        {
+          "name": "approval_required",
+          "description": "Whether registrations require moderator approval.",
+          "attributes": [],
+          "type": "bool"
+        },
+        {
+          "name": "urls",
+          "description": "URLs of interest for clients apps.",
+          "attributes": [],
+          "type": "Urls"
+        },
+        {
+          "name": "stats",
+          "description": "Statistics about how much information the instance contains.",
+          "attributes": [],
+          "type": "Stats"
+        },
+        {
+          "name": "thumbnail",
+          "description": "Banner image for the website.",
+          "attributes": [
+            "builder(setter(into, strip_option), default)"
+          ],
+          "type": "Url",
+          "optional": true
+        },
+        {
+          "name": "contact_account",
+          "description": "A user that can be contacted, as an alternative to email.",
+          "attributes": [
+            "builder(default)"
+          ],
+          "type": "Account",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "name": "Urls",
+      "description": "URLs of interest for clients apps.",
+      "fields": [
+        {
+          "name": "streaming_api",
+          "description": "Websockets address for push streaming",
+          "type": "Url"
+        }
+      ]
+    },
+    {
+      "name": "Stats",
+      "description": "Statistics about how much information the instance contains.",
+      "fields": [
+        {
+          "name": "user_count",
+          "description": "Users registered on this instance.",
+          "type": "u64"
+        },
+        {
+          "name": "status_count",
+          "description": "Statuses authored by users on instance",
+          "type": "u64"
+        },
+        {
+          "name": "domain_count",
+          "description": "Domains federated with this instance.",
+          "type": "u64"
+        }
+      ]
+    }
+  ]
+}

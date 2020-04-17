@@ -1,0 +1,49 @@
+{
+  "includes": [
+    "crate::account::Account",
+    "crate::status::Status",
+    "crate::tag::Tag"
+  ],
+  "models": [
+    {
+      "name": "Results",
+      "description": "Represents the results of a search.",
+      "fields": [
+        {
+          "name": "accounts",
+          "description": "Accounts which match the given query",
+          "type": "Vec<Account>"
+        },
+        {
+          "name": "statuses",
+          "description": "Statuses which match the given query",
+          "type": "Vec<Status>"
+        },
+        {
+          "name": "hashtags",
+          "description": "Hashtags which match the given query",
+          "type": "Vec<TagOrString>"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "TagOrString",
+      "description": "Represents a Tag object or a String hashtag",
+      "attributes": [
+        "serde(untagged)"
+      ],
+      "variants": [
+        {
+          "name": "Tag(Tag)",
+          "description": "A Tag, introduced in 2.8.0 and became the default in 3.0.0"
+        },
+        {
+          "name": "String(String)",
+          "description": "A String hashtag, deprecated in 2.8.0 and removed in 3.0.0"
+        }
+      ]
+    }
+  ]
+}

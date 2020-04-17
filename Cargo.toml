@@ -1,0 +1,31 @@
+[package]
+name = "mastodon-api-models"
+version = "0.1.0"
+authors = ["Paul Woolcock <paul@woolcock.us>"]
+edition = "2018"
+license = "MIT/Apache-2.0"
+readme = "README.md"
+description = "A collection of data objects for the Mastodon API"
+repository = "https://github.com/pwoolcoc/mastodon-api-models"
+documentation = "https://docs.rs/mastodon-api-models"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+url = { version = "2.1", features = ["serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+derive_builder = "0.9"
+chrono = { version = "0.4", features = ["serde"] }
+isolang = { version = "1.0", features = ["serde_serialize"] }
+getset = "0.1.0"
+derive-getters = "0.1.0"
+
+[build-dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+fehler = "1.0"
+anyhow = "1.0"
+
+[dev-dependencies]
+serde_json = "1.0"

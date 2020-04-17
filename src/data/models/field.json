@@ -1,0 +1,40 @@
+{
+    "includes": [
+        "chrono::DateTime",
+        "chrono::Utc"
+    ],
+    "models": [
+        {
+            "name": "Field",
+            "description": "Represents a profile field as a name-value pair with optional verification.",
+            "fields": [
+                {
+                    "name": "name",
+                    "description": "The key of a given field's key-value pair.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "The value associated with the name key.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "verified_at",
+                    "description": "The key of a given field's key-value pair.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "type": "DateTime<Utc>",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}
+

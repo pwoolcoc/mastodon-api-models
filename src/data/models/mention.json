@@ -1,0 +1,42 @@
+{
+  "includes": [
+    "url::Url"
+  ],
+  "models": [
+    {
+      "name": "Mention",
+      "description": "Represents a mention of a user within the content of a status.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The account id of the mentioned user.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "username",
+          "description": "The username of the mentioned user.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "acct",
+          "description": "The webfinger acct: URI of the mentioned user. Equivalent to username for local users, or username@domain for remote users.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "description": "The location of the mentioned user's profile.",
+          "type": "Url"
+        }
+      ]
+    }
+  ]
+}

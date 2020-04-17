@@ -1,0 +1,211 @@
+{
+  "includes": [
+    "crate::account::Account",
+    "crate::application::Application",
+    "crate::attachment::Attachment",
+    "crate::card::Card",
+    "crate::mention::Mention",
+    "crate::poll::Poll",
+    "crate::tag::Tag",
+    "crate::visibility::Visibility",
+    "crate::emoji::Emoji",
+    "chrono::DateTime",
+    "chrono::Utc",
+    "isolang::Language",
+    "url::Url"
+  ],
+  "models": [
+    {
+      "name": "Status",
+      "description": "Represents a status posted by an account.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "ID of the status in the database.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "uri",
+          "description": "URI of the status used for federation.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "description": "The date when this status was created.",
+          "type": "DateTime<Utc>"
+        },
+        {
+          "name": "account",
+          "description": "The account that authored this status.",
+          "type": "Account"
+        },
+        {
+          "name": "content",
+          "description": "HTML-encoded status content.",
+          "attributes":  [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "visibility",
+          "description": "Visibility of this status.",
+          "type": "Visibility"
+        },
+        {
+          "name": "sensitive",
+          "description": "Is this status marked as sensitive content?",
+          "type": "bool"
+        },
+        {
+          "name": "spoiler_text",
+          "description": "Subject or summary line, below which status content is collapsed until expanded.",
+          "attributes":  [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "media_attachments",
+          "description": "Media that is attached to this status.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Attachment>"
+        },
+        {
+          "name": "application",
+          "description": "The application used to post this status.",
+          "type": "Application"
+        },
+        {
+          "name": "mentions",
+          "description": "Mentions of users within the status content.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Mention>"
+        },
+        {
+          "name": "tags",
+          "description": "Hashtags used within the status content.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Tag>"
+        },
+        {
+          "name": "emojis",
+          "description": "Custom emoji to be used when rendering status content.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Emoji>"
+        },
+        {
+          "name": "reblogs_count",
+          "description": "How many boosts this status has received.",
+          "type": "u64"
+        },
+        {
+          "name": "favourites_count",
+          "description": "How many favourites this status has received.",
+          "type": "u64"
+        },
+        {
+          "name": "replies_count",
+          "description": "How many replies this status has received.",
+          "type": "u64"
+        },
+        {
+          "name": "url",
+          "description": "A link to the status's HTML representation.",
+          "type": "Url",
+          "optional": true
+        },
+        {
+          "name": "in_reply_to_id",
+          "description": "ID of the status being replied.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String",
+          "optional": true
+        },
+        {
+          "name": "in_reply_to_account_id",
+          "description": "ID of the account being replied to.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String",
+          "optional": true
+        },
+        {
+          "name": "reblog",
+          "description": "The status being reblogged.",
+          "type": "Box<Status>",
+          "optional": true
+        },
+        {
+          "name": "poll",
+          "description": "The poll attached to the status.",
+          "type": "Poll",
+          "optional": true
+        },
+        {
+          "name": "card",
+          "description": "Preview card for links included within status content.",
+          "type": "Card",
+          "optional": true
+        },
+        {
+          "name": "language",
+          "description": "Primary language of this status.",
+          "type": "Language",
+          "optional": true
+        },
+        {
+          "name": "text",
+          "description": "Plain-text source of a status. Returned instead of content when status is deleted, so the user may redraft from the source text without the client having to reverse-engineer the original text from the HTML content.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String",
+          "optional": true
+        },
+        {
+          "name": "favourited",
+          "description": "Have you favourited this status?",
+          "type": "bool"
+        },
+        {
+          "name": "reblogged",
+          "description": "Have you boosted this status?",
+          "type": "bool"
+        },
+        {
+          "name": "muted",
+          "description": "Have you muted notifications for this status's conversation?",
+          "type": "bool"
+        },
+        {
+          "name": "bookmarked",
+          "description": "Have you bookmarked this status?",
+          "type": "bool"
+        },
+        {
+          "name": "pinned",
+          "description": "Have you pinned this status? Only appears if the status is pinnable.",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "includes": [
+    "chrono::DateTime",
+    "chrono::Utc"
+  ],
+  "models": [
+    {
+      "name": "Marker",
+      "description": "Represents the last read position within a user's timelines.",
+      "fields": [
+        {
+          "name": "home",
+          "description": "Information about the user's position in the home timeline.",
+          "type": "Fields"
+        },
+        {
+          "name": "notifications",
+          "description": "Information about the user's position in their notifications.",
+          "type": "Fields"
+        }
+      ]
+    },
+    {
+      "name": "Fields",
+      "description": "Represents the last read position within a user's timelines.",
+      "fields": [
+        {
+          "name": "last_read_id",
+          "description": "The ID of the most recently viewed entity.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "description": "The timestamp of when the marker was set.",
+          "type": "DateTime<Utc>"
+        },
+        {
+          "name": "version",
+          "description": "Used for locking to prevent write conflicts.",
+          "type": "u64"
+        }
+      ]
+    }
+  ]
+}

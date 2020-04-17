@@ -1,0 +1,161 @@
+{
+    "includes": [
+        "url::Url"
+    ],
+    "models": [
+        {
+            "name": "Card",
+            "description": "Represents a rich preview card that is generated using OpenGraph tags from a URL.",
+            "fields": [
+                {
+                    "description": "Location of linked resource.",
+                    "name": "url",
+                    "type": "Url"
+                },
+                {
+                    "description": "Title of linked resource.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "title",
+                    "type": "String"
+                },
+                {
+
+                    "description": "Description of preview.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "description",
+                    "type": "String"
+                },
+                {
+
+                    "description": "The type of the preview card.",
+                    "name": "r#type",
+                    "type": "Type"
+                },
+                {
+
+                    "description": "The author of the original resource.",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "author_name",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+
+                    "description": "A link to the author of the original resource.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "author_url",
+                    "type": "Url",
+                    "optional": true
+                },
+                {
+
+                    "description": "The provider of the original resource.",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "provider_name",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+
+                    "description": "A link to the provider of the original resource.",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "provider_url",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+
+                    "description": "HTML to be used for generating the preview card.",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "name": "html",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+
+                    "description": "Width of preview, in pixels.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "width",
+                    "type": "u64",
+                    "optional": true
+                },
+                {
+
+                    "description": "Height of preview, in pixels.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "height",
+                    "type": "u64",
+                    "optional": true
+                },
+                {
+
+                    "description": "Preview thumbnail.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "image",
+                    "type": "Url",
+                    "optional": true
+                },
+                {
+
+                    "description": "Used for photo embeds, instead of custom html.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "name": "embed_url",
+                    "type": "Url",
+                    "optional": true
+                }
+            ]
+        }
+    ],
+    "enums": [
+        {
+            "name": "Type",
+            "description": "The type of the preview card.",
+            "attributes": [
+                "serde(rename_all = \"lowercase\")"
+            ],
+            "derives": [
+                "Copy"
+            ],
+            "variants": [
+                {
+                    "name": "Link",
+                    "description": "link = Link OEmbed"
+                },
+                {
+                    "name": "Photo",
+                    "description": "photo = Photo OEmbed"
+                },
+                {
+                    "name": "Video",
+                    "description": "video = Video OEmbed"
+                },
+                {
+                    "name": "Rich",
+                    "description": "rich = iframe OEmbed. Not currently accepted, so won't show up in practice."
+                }
+            ]
+        }
+    ]
+}

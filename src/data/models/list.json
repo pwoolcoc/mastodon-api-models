@@ -1,0 +1,27 @@
+{
+  "includes": [],
+  "models": [
+    {
+      "name": "List",
+      "description": "Represents a list of some users that the authenticated user follows.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The internal database ID of the list.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "description": "The user-defined title of the list.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}

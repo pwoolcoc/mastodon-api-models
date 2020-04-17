@@ -1,0 +1,40 @@
+{
+    "includes": [
+        "chrono::serde::ts_seconds",
+        "chrono::DateTime",
+        "chrono::Utc"
+    ],
+    "models": [
+        {
+            "name": "History",
+            "description": "",
+            "fields": [
+                {
+                    "description": "UNIX timestamp on midnight of the given day.",
+                    "name": "day",
+                    "type": "DateTime<Utc>",
+                    "attributes": [
+                        "serde(with = \"ts_seconds\")"
+                    ]
+                },
+                {
+                    "description": "the counted usage of the tag within that day.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "uses",
+                    "type": "String"
+                },
+                {
+                    "description": "the total of accounts using the tag within that day.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "accounts",
+                    "type": "String"
+                }
+            ]
+        }
+    ]
+}
+

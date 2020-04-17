@@ -1,0 +1,55 @@
+{
+    "includes": [
+        "url::Url"
+    ],
+    "models": [
+        {
+            "name": "Application",
+            "description": "Represents an application that interfaces with the REST API to access accounts or post statuses.",
+            "fields": [
+                {
+                    "name": "name",
+                    "description": "The name of your application.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "website",
+                    "description": "The website associated with your application.",
+                    "attributes": [
+                        "builder(setter(strip_option), default)"
+                    ],
+                    "type": "Url",
+                    "optional": true
+                },
+                {
+                    "name": "vapid_key",
+                    "description": "Used for Push Streaming API. Returned with POST /api/v1/apps. Equivalent to PushSubscription#server_key",
+                    "attributes": [
+                        "builder(setter(into, strip_option), default)"
+                    ],
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "client_id",
+                    "description": "Client ID key, to be used for obtaining OAuth tokens",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                },
+                {
+                    "name": "client_secret",
+                    "description": "Client secret key, to be used for obtaining OAuth tokens",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "type": "String"
+                }
+            ]
+        }
+    ]
+}

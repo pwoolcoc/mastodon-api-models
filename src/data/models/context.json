@@ -1,0 +1,29 @@
+{
+    "includes": [
+        "crate::status::Status"
+    ],
+    "models": [
+        {
+            "name": "Context",
+            "description": "Represents the tree around a given status. Used for reconstructing threads of statuses.",
+            "fields": [
+                {
+                    "name": "ancestors",
+                    "type": "Vec<Status>",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "description": "Parents in the thread."
+                },
+                {
+                    "description": "Children in the thread.",
+                    "attributes": [
+                        "builder(setter(into))"
+                    ],
+                    "name": "descendants",
+                    "type": "Vec<Status>"
+                }
+            ]
+        }
+    ]
+}

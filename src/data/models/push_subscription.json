@@ -1,0 +1,71 @@
+{
+  "includes": [
+    "url::Url"
+  ],
+  "models": [
+    {
+      "name": "PushSubscription",
+      "description": "Represents a subscription to the push streaming server.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The id of the push subscription in the database.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "endpoint",
+          "description": "Where push alerts will be sent to.",
+          "attributes": [],
+          "type": "Url"
+        },
+        {
+          "name": "server_key",
+          "description": "The streaming server's VAPID key.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "alerts",
+          "description": "Which alerts should be delivered to the endpoint.",
+          "type": "Alerts"
+        }
+      ]
+    },
+    {
+      "name": "Alerts",
+      "description": "Which alerts should be delivered to the endpoint.",
+      "fields": [
+        {
+          "name": "follow",
+          "description": "Receive a push notification when someone has followed you?",
+          "type": "bool"
+        },
+        {
+          "name": "favourite",
+          "description": "Receive a push notification when a status you created has been favourited by someone else?",
+          "type": "bool"
+        },
+        {
+          "name": "mention",
+          "description": "Receive a push notification when someone else has mentioned you in a status?",
+          "type": "bool"
+        },
+        {
+          "name": "reblog",
+          "description": "Receive a push notification when a status you created has been boosted by someone else?",
+          "type": "bool"
+        },
+        {
+          "name": "poll",
+          "description": "Receive a push notification when a poll you voted in or created has ended?",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

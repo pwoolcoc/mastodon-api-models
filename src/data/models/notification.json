@@ -1,0 +1,79 @@
+{
+  "includes": [
+    "chrono::DateTime",
+    "chrono::Utc",
+    "crate::account::Account",
+    "crate::status::Status"
+  ],
+  "models": [
+    {
+      "name": "Notification",
+      "description": "Represents a notification of an event relevant to the user.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The id of the notification in the database.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "r#type",
+          "description": "The type of event that resulted in the notification.",
+          "type": "Type"
+        },
+        {
+          "name": "created_at",
+          "description": "The timestamp of the notification.",
+          "type": "DateTime<Utc>"
+        },
+        {
+          "name": "account",
+          "description": "The account that performed the action that generated the notification.",
+          "type": "Account"
+        },
+        {
+          "name": "status",
+          "description": "Status that was the object of the notification, e.g. in mentions, reblogs, favourites, or polls.",
+          "type": "Status",
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "Type",
+      "description": "The type of event that resulted in the notification.",
+      "attributes": [
+        "serde(rename_all = \"lowercase\")"
+      ],
+      "derives": [
+        "Copy"
+      ],
+      "variants": [
+        {
+          "name": "Follow",
+          "description": "follow = Someone followed you"
+        },
+        {
+          "name": "Mention",
+          "description": "mention = Someone mentioned you in their status"
+        },
+        {
+          "name": "Reblog",
+          "description": "reblog = Someone boosted one of your statuses"
+        },
+        {
+          "name": "Favourite",
+          "description": "favourite = Someone favourited one of your statuses"
+        },
+        {
+          "name": "Poll",
+          "description": "poll = A poll you have voted in or created has ended"
+        }
+      ]
+    }
+  ]
+}

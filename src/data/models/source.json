@@ -1,0 +1,67 @@
+{
+  "includes": [
+    "crate::field::Field",
+    "crate::visibility::Visibility",
+    "isolang::Language"
+  ],
+  "models": [
+    {
+      "name": "Source",
+      "description": "Represents display or publishing preferences of user's own account. Returned as an additional entity when verifying and updated credentials, as an attribute of Account.",
+      "fields": [
+        {
+          "name": "note",
+          "description": "Profile bio.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "fields",
+          "description": "Metadata about the account.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "Vec<Field>"
+        },
+        {
+          "name": "privacy",
+          "description": "The default post privacy to be used for new statuses.",
+          "attributes": [
+            "builder(setter(strip_option))"
+          ],
+          "type": "Visibility",
+          "optional": true
+        },
+        {
+          "name": "sensitive",
+          "description": "Whether new statuses should be marked sensitive by default.",
+          "attributes": [
+            "builder(setter(strip_option))"
+          ],
+          "type": "bool",
+          "optional": true
+        },
+        {
+          "name": "language",
+          "description": "Whether new statuses should be marked sensitive by default.",
+          "attributes": [
+            "builder(setter(strip_option))"
+          ],
+          "type": "Language",
+          "optional": true
+        },
+        {
+          "name": "follow_requests_count",
+          "description": "The number of pending follow requests.",
+          "attributes": [
+            "builder(setter(strip_option))"
+          ],
+          "type": "u64",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

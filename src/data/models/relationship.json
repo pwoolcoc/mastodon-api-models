@@ -1,0 +1,69 @@
+{
+  "includes": [],
+  "models": [
+    {
+      "name": "Relationship",
+      "description": "Represents the relationship between accounts, such as following / blocking / muting / etc.",
+      "fields": [
+        {
+          "name": "id",
+          "description": "The account id.",
+          "attributes": [
+            "builder(setter(into))"
+          ],
+          "type": "String"
+        },
+        {
+          "name": "following",
+          "description": "Are you following this user?",
+          "type": "bool"
+        },
+        {
+          "name": "requested",
+          "description": "Do you have a pending follow request for this user?",
+          "type": "bool"
+        },
+        {
+          "name": "endorsed",
+          "description": "Are you featuring this user on your profile?",
+          "type": "bool"
+        },
+        {
+          "name": "followed_by",
+          "description": "Are you followed by this user?",
+          "type": "bool"
+        },
+        {
+          "name": "muting",
+          "description": "Are you muting this user?",
+          "type": "bool"
+        },
+        {
+          "name": "muting_notifications",
+          "description": "Are you muting notifications from this user?",
+          "type": "bool"
+        },
+        {
+          "name": "showing_reblogs",
+          "description": "Are you receiving this user's boosts in your home timeline?",
+          "type": "bool"
+        },
+        {
+          "name": "blocking",
+          "description": "Are you blocking this user?",
+          "type": "bool"
+        },
+        {
+          "name": "domain_blocking",
+          "description": "Are you blocking this user's domain?",
+          "type": "bool"
+        },
+        {
+          "name": "blocked_by",
+          "description": "Is this user blocking you?",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}
